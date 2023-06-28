@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+  <form action="">
+    <div class="mb-3">
+        <label class="form-label">Search for Vote Center:</label>
+        <input type="text" name="searchVoteCenter" class="form-control"/>
+      </div>
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+  <p>Searching for: {{ searchTerm }}</p>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+  {% for votecenter in votecenters %}
+  <div v-for="votecenter in votecenters" class="col">
+  <div class="card">
+  <img class="card-img-top" src="{{ votecenter.image.url }}" />
+  <div class="card-body">
+  <h5 class="card-title fw-bold">{{ votecenter.sitename}}</h5>
+  <p class="card-text">{{ votecenter.description}}</p>
+  {% if votecenter.url %}
+  <a href="{{ votecenter.url }}"
+  class="btn btn-primary">
+  Votecenter Link
+  </a>
+  {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+{% endblock content %}
